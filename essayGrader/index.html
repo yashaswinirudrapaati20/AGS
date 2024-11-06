@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Automated Essay Grading System</title>
+    <style>
+        /* Background Image */
+        body {
+            background-image: url('https://images.unsplash.com/photo-1523376792025-8f0e2e1c1e7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=1920');
+            background-size: cover; /* Cover the entire viewport */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Prevent the background from repeating */
+        }
+        /* Overlay for better text readability */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+            z-index: 0; /* Send overlay behind the content */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans relative">
+    <div class="overlay"></div> <!-- Overlay for better readability -->
+    <div class="container mx-auto p-8 relative z-10"> <!-- Ensure content is above the overlay -->
+        <div class="bg-white shadow-lg rounded-lg p-6 md:p-8">
+            <h1 class="text-4xl font-bold text-center text-blue-600 mb-6">Automated Essay Grading System</h1>
+            <textarea id="essayInput" placeholder="Enter your essay here..." rows="10" class="w-full p-4 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"></textarea>
+            <button id="submitButton" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition duration-200 transform hover:scale-105">Grade Essay</button>
+            <h2 id="resultTitle" class="text-2xl font-semibold mt-6 text-gray-800">Result</h2>
+            <div id="result" class="mt-2 p-4 border border-gray-300 rounded-lg bg-gray-50"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
