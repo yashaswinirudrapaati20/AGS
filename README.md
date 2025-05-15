@@ -1,4 +1,4 @@
-🧠 Automated Short Answer Grading System
+ Automated Short Answer Grading System
 This project demonstrates a machine learning approach to automatically grade short answers using semantic similarity techniques. It utilizes Sentence-BERT for understanding text and a Random Forest Regressor to predict grades. The solution includes visualizations to analyze and compare actual vs predicted grades.
 
 📑 Table of Contents
@@ -57,20 +57,14 @@ Predict & Visualize: Predict test set grades and visualize accuracy and distribu
 
 ⚙️ Installation
 To run this project, install the required Python libraries:
-
-bash
-Copy
-Edit
 pip install -U datasets sentence-transformers scikit-learn matplotlib seaborn torch
+
 ▶️ Usage
 Clone the repository or copy the script.
 
 Run the script using Python:
-
-bash
-Copy
-Edit
 python main.py  # or your actual script name
+
 📊 Output
 📉 MSE and R² Score printed in console
 
