@@ -1,92 +1,105 @@
- Automated Short Answer Grading System
-This project demonstrates a machine learning approach to automatically grade short answers using semantic similarity techniques. It utilizes Sentence-BERT for understanding text and a Random Forest Regressor to predict grades. The solution includes visualizations to analyze and compare actual vs predicted grades.
+# Automated Short Answer Grading System
 
-📑 Table of Contents
-Features
+This project demonstrates a machine learning approach to automatically grade short answers using semantic similarity techniques. It utilizes Sentence-BERT for understanding text and trains regression models to predict grades. The solution includes visualizations to analyze and compare actual vs predicted grades and provides an interactive interface for real-time grading in the enhanced version.
 
-Technologies Used
+---
 
-How It Works
+## 📑 Table of Contents
+- Features
+- Technologies Used
+- How It Works
+- Installation
+- Usage
+- Updates & Improvements
+- Notes
 
-Installation
+---
 
-Usage
+## ✅ Features
 
-Output
+### Common Features (Both Notebooks)
+- Automatically grades student short answers using semantic similarity.
+- Uses Sentence-BERT to capture contextual meaning of answers.
+- Converts similarity scores to a human-like grading scale (4, 6, 8, 10).
+- Provides visualizations of Actual vs Predicted grades and grade distribution.
 
-✅ Features
-Automatically grades student short answers using semantic similarity.
+### Enhanced Features (New Notebook: `AGS_Gradio_Enhanced.ipynb`)
+- Supports **multiple models**: Random Forest, Gradient Boosting, Support Vector Regression, and Neural Network.
+- Computes **additional input features** for improved prediction:
+  - Cosine similarity between **student answer and reference answer**.
+  - Cosine similarity between **student answer and question**.
+  - Cosine similarity between **reference answer and question**.
+  - **Answer length ratio** (student answer vs reference answer).
+  - **Word count ratio** (student answer vs reference answer).
+- Evaluates models using **MSE, RMSE, MAE, R², and Accuracy** (percentage of predictions within ±1 grade).
+- Automatically selects **best model** based on R² score.
+- Provides **model comparison plots** to visualize performance.
+- Includes **interactive Gradio interface** for students/teachers to input answers and receive grades instantly.
 
-Uses Sentence-BERT to capture contextual meaning of answers.
+---
 
-Converts similarity scores to human-like grading scale (4, 6, 8, 10).
+## 🛠 Technologies Used
+- Python
+- SentenceTransformers
+- HuggingFace Datasets
+- Scikit-Learn
+- Matplotlib & Seaborn
+- Torch
+- Gradio (Enhanced Notebook)
 
-Trains a Random Forest model to predict grades more flexibly.
+---
 
-Provides two types of visualizations:
+## 🧠 How It Works
+1. **Load Dataset**: SciEntsBank dataset from HuggingFace.  
+2. **Embed Text**: Use Sentence-BERT (`all-MiniLM-L6-v2`) to convert question, student answer, and reference answer to vectors.  
+3. **Compute Features**: Cosine similarities, answer length ratio, and word count ratio.  
+4. **Convert to Grade**: Use similarity thresholds to assign a grade (4–10 scale).  
+5. **Train Model(s)**: Random Forest or multiple models in the enhanced version.  
+6. **Predict & Visualize**: Predict test set grades and visualize performance.  
+7. **Interactive Grading**: In the enhanced notebook, users can enter answers via Gradio and receive instant grades.
 
-Actual vs Predicted Scatter Plot
-
-Grade Distribution Comparison
-
-🛠 Technologies Used
-Python: Core language for scripting and ML tasks
-
-SentenceTransformers: For generating embeddings of text
-
-HuggingFace Datasets: For loading the SciEntsBank dataset
-
-Scikit-Learn: For training and evaluating machine learning models
-
-Matplotlib & Seaborn: For visualizing predictions and distributions
-
-Torch: Backend for Sentence-BERT
-
-🧠 How It Works
-Load Dataset: SciEntsBank dataset from HuggingFace
-
-Embed Text: Use Sentence-BERT (all-MiniLM-L6-v2) to convert question, student answer, and reference answer to vectors
-
-Compute Similarity: Cosine similarity between student and reference answers
-
-Convert to Grade: Use similarity thresholds to assign a grade (4–10 scale)
-
-Train Model: Use the similarity score as input to train a Random Forest Regressor
-
-Predict & Visualize: Predict test set grades and visualize accuracy and distribution
-
-⚙️ Installation
-To run this project, install the required Python libraries:
-pip install -U datasets sentence-transformers scikit-learn matplotlib seaborn torch
+---
+## ⚙️ Installation
+Install required libraries:
+"```bash
+pip install -U datasets sentence-transformers scikit-learn matplotlib seaborn torch gradio"
 
 ▶️ Usage
-Clone the repository or copy the script.
 
-Run the script using Python:
-python main.py  # or your actual script name
+Clone the repository or download the notebooks.
 
-📊 Output
-📉 MSE and R² Score printed in console
+For old notebook:
 
-📈 Scatter Plot of Actual vs Predicted Grades
+jupyter notebook AutomatedGradingSystem.ipynb
 
-📊 Histogram comparing grade distribution (Actual vs Predicted)
 
-Example Summary:
+For enhanced notebook:
 
-markdown
-Copy
-Edit
-📊 Model Evaluation Summary
-----------------------------------------
-🔹 Mean Squared Error (MSE): 1.6435
-🔹 R-squared (R²): 0.6852
-🔹 Sample size: 420
-----------------------------------------
+jupyter notebook AGS_Gradio_Enhanced.ipynb
+
+
+Follow the instructions in the notebook.
+
+In the enhanced notebook, you can interactively test answers via Gradio.
+
+📊 Updates & Improvements
+
+Enhanced input features for better prediction accuracy.
+
+Multiple models evaluated and best model selected automatically.
+
+Accuracy metric added to measure reliability of predictions.
+
+Interactive Gradio interface for real-time testing.
+
+Improved visualizations including model comparison charts.
+
+Enhanced predictions are more accurate, flexible, and robust compared to the old notebook.
+
 📌 Notes
+
 The similarity-to-grade logic can be fine-tuned in the similarity_to_grade() function.
 
-You can try other regressors or embedding models for experimentation.
+Other regressors or embedding models can be tested for experimentation.
 
-Visualization helps assess how close the model's predictions are to actual human-assigned grades.
-
+The enhanced notebook provides better usability for practical grading applications.
